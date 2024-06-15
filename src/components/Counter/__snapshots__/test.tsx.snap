@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Counter /> > should render Counter 1`] = `
+<div>
+  <h1
+    data-testid="count"
+  >
+    Count: 
+    0
+  </h1>
+  <button>
+    Increment By 1
+  </button>
+  <button>
+    Decrement
+  </button>
+  <button>
+    Increment Async By 2
+  </button>
+  <button>
+    Increment If Odd By 3
+  </button>
+  <button>
+    Increment If Odd By 2
+  </button>
+  <button>
+    Increment By 5
+  </button>
+</div>
+`;
