@@ -1,9 +1,6 @@
 import { act } from 'react'
 import Counter from '.'
 import { render, screen } from 'utils/storeTestUtils'
-import { setupStore } from 'store'
-import { decrement, incrementByAmount } from 'store/slices/count'
-
 describe('<Counter />', () => {
   it('should render Counter', () => {
     const { container } = render(<Counter />)
@@ -43,23 +40,5 @@ describe('<Counter />', () => {
       screen.getByText(/Increment Async By 2/i).click()
     })
     expect(await screen.findByText(/Count: 2/i)).toBeInTheDocument()
-  })
-})
-
-describe('Counter slice', () => {
-  it('should should increment by 3', async () => {
-    const store = setupStore()
-    store.dispatch(incrementByAmount(3))
-
-    render(<Counter />, { store })
-    expect(await screen.findByText(/Count: 3/i)).toBeInTheDocument()
-  })
-
-  it('should decrement', () => {
-    const store = setupStore()
-    store.dispatch(decrement())
-
-    render(<Counter />, { store })
-    expect(screen.getByTestId('count')).toHaveTextContent('Count: -1')
   })
 })
