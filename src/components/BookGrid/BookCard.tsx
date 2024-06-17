@@ -51,7 +51,7 @@ export default function BookCard({ book }: { book: BookSummary }) {
         <p title={book.volumeInfo.authors.join(', ')}>{authors}</p>
         <p>{price}</p>
         <button
-          onClick={() => navigate(`details/${book.id}`)}
+          onClick={() => navigate(`/details/${book.id}`)}
           className="rounded bg-blue-400"
         >
           Details
