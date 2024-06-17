@@ -15,6 +15,7 @@ export const singleMockBook = {
   },
   saleInfo: {
     retailPrice: {
+      saleability: 'FOR_SALE',
       amount: 1000,
       currencyCode: 'TRY'
     }

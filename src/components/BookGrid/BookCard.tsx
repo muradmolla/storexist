@@ -10,7 +10,8 @@ export interface BookSummary {
     authors: string[]
   }
   saleInfo: {
-    retailPrice: {
+    saleability: string
+    retailPrice?: {
       amount: number
       currencyCode: string
     }
@@ -22,6 +23,11 @@ export default function BookCard({ book }: { book: BookSummary }) {
     book.volumeInfo.authors.length > 1
       ? `${book.volumeInfo.authors[0]} et al.`
       : book.volumeInfo.authors[0]
+
+  const price =
+    book.saleInfo.saleability === 'FOR_SALE' && book.saleInfo.retailPrice
+      ? `${book.saleInfo.retailPrice.amount} ${book.saleInfo.retailPrice.currencyCode}`
+      : 'Not for sale'
   return (
     <div key={book.id} className="flex border">
       <img
@@ -31,10 +37,7 @@ export default function BookCard({ book }: { book: BookSummary }) {
       <div className="flex w-full flex-col justify-between gap-1 p-4">
         <h3 className="font-bold">{book.volumeInfo.title}</h3>
         <p title={book.volumeInfo.authors.join(', ')}>{authors}</p>
-        <p>
-          {book.saleInfo.retailPrice.amount}{' '}
-          {book.saleInfo.retailPrice.currencyCode}
-        </p>
+        <p>{price}</p>
         <button className="rounded bg-blue-400">Details</button>
         <button className="rounded bg-green-400">Add to Cart</button>
       </div>

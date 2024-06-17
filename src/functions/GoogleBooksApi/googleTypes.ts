@@ -37,6 +37,8 @@ export interface SaleInfo {
   country: string
   saleability: string
   isEbook: boolean
+  listPrice?: { amount: number; currencyCode: string }
+  retailPrice?: { amount: number; currencyCode: string }
 }
 export interface AccessInfo {
   country: string
