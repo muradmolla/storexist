@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { truncate } from 'utils'
 
 export const BookCardConfig = {
@@ -30,6 +31,8 @@ export default function BookCard({ book }: { book: BookSummary }) {
       ? `${book.volumeInfo.authors[0]} et al.`
       : book.volumeInfo.authors[0]
 
+  const navigate = useNavigate()
+
   const price =
     book.saleInfo.saleability === 'FOR_SALE' && book.saleInfo.retailPrice
       ? `${book.saleInfo.retailPrice.amount} ${book.saleInfo.retailPrice.currencyCode}`
@@ -46,7 +49,12 @@ export default function BookCard({ book }: { book: BookSummary }) {
         </h3>
         <p title={book.volumeInfo.authors.join(', ')}>{authors}</p>
         <p>{price}</p>
-        <button className="rounded bg-blue-400">Details</button>
+        <button
+          onClick={() => navigate(`details/${book.id}`)}
+          className="rounded bg-blue-400"
+        >
+          Details
+        </button>
         <button className="rounded bg-green-400">Add to Cart</button>
       </div>
     </div>
