@@ -1,5 +1,5 @@
 import googleRequest from './googleRequest'
-import type { GoogleBooksResponse } from './googleTypes'
+import type { GoogleBook, GoogleBooksResponse } from './googleTypes'
 
 const GoogleBooksApi = {
   searchBooks: async (query: string): Promise<GoogleBooksResponse> => {
@@ -7,6 +7,10 @@ const GoogleBooksApi = {
       'volumes',
       new URLSearchParams({ q: query })
     )
+    return response
+  },
+  bookDetails: async (id: string): Promise<GoogleBook> => {
+    const response = googleRequest.get<GoogleBook>(`volumes/${id}`)
     return response
   }
 }
