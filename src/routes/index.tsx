@@ -3,6 +3,7 @@ import Home from './Home'
 import Details, { loader as detailsLoader } from './Details'
 import ErrorPage from './ErrorPage'
 import App from 'App'
+import Search, { loader as searchLoader } from './Search'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
         element: <Details />,
         loader: detailsLoader,
         errorElement: <ErrorPage />
+      },
+      {
+        path: 'search/:query',
+        element: <Search />,
+        loader: searchLoader
       }
     ]
   }
