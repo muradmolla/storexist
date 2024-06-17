@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react'
-
+import { render } from 'utils/storeTestUtils'
 import App from './App'
 
 describe('<App />', () => {
