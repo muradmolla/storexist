@@ -1,3 +1,4 @@
+import AddToCart from 'components/AddToCart'
 import { useNavigate } from 'react-router-dom'
 import { truncate } from 'utils'
 
@@ -55,7 +56,7 @@ export default function BookCard({ book }: { book: BookSummary }) {
         >
           Details
         </button>
-        <button className="rounded bg-green-400">Add to Cart</button>
+        <AddToCart id={book.id} />
       </div>
     </div>
   )
