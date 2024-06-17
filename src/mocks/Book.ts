@@ -14,8 +14,8 @@ export const singleMockBook = {
     authors: ['Author 1', 'Author 2']
   },
   saleInfo: {
+    saleability: 'FOR_SALE',
     retailPrice: {
-      saleability: 'FOR_SALE',
       amount: 1000,
       currencyCode: 'TRY'
     }
