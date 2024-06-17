@@ -32,6 +32,7 @@ export interface VolumeInfo {
   contentVersion: string
   panelizationSummary: PanelizationSummary
   imageLinks: ImageLinks
+  language: string
 }
 export interface SaleInfo {
   country: string
@@ -70,6 +71,10 @@ export interface PanelizationSummary {
 export interface ImageLinks {
   smallThumbnail: string
   thumbnail: string
+  small: string
+  medium: string
+  large: string
+  extraLarge: string
 }
 
 export interface Epub {
