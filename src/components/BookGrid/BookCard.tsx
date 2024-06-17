@@ -1,3 +1,9 @@
+import { truncate } from 'utils'
+
+export const BookCardConfig = {
+  titleTruncate: 30
+}
+
 export interface BookSummary {
   id: string
   volumeInfo: {
@@ -35,7 +41,9 @@ export default function BookCard({ book }: { book: BookSummary }) {
         alt={book.volumeInfo.title}
       />
       <div className="flex w-full flex-col justify-between gap-1 p-4">
-        <h3 className="font-bold">{book.volumeInfo.title}</h3>
+        <h3 className="font-bold">
+          {truncate(book.volumeInfo.title, BookCardConfig.titleTruncate)}
+        </h3>
         <p title={book.volumeInfo.authors.join(', ')}>{authors}</p>
         <p>{price}</p>
         <button className="rounded bg-blue-400">Details</button>
