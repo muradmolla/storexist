@@ -4,12 +4,11 @@ const defaultHeaders: HeadersInit = {
 
 const fetchGoogleRequest = async <TResponse>(
   endpoint: string,
-  params: URLSearchParams,
+  params: URLSearchParams = new URLSearchParams(),
   config: RequestInit = {}
 ): Promise<TResponse> => {
   const newConfig = config
   const newParams = params
-
   return fetch(
     `https://www.googleapis.com/books/v1/${endpoint}?${newParams.toString()}`,
     newConfig
@@ -21,12 +20,12 @@ const fetchGoogleRequest = async <TResponse>(
 }
 
 const googleRequest = {
-  get: <TResponse>(url: string, params: URLSearchParams) =>
+  get: <TResponse>(url: string, params?: URLSearchParams) =>
     fetchGoogleRequest<TResponse>(url, params, { headers: defaultHeaders }),
   post: <TBody extends BodyInit, TResponse>(
     url: string,
-    params: URLSearchParams,
-    body: TBody
+    body: TBody,
+    params?: URLSearchParams
   ) =>
     fetchGoogleRequest<TResponse>(url, params, {
       method: 'POST',
@@ -35,15 +34,15 @@ const googleRequest = {
     }),
   put: <TBody extends BodyInit, TResponse>(
     url: string,
-    params: URLSearchParams,
-    body: TBody
+    body: TBody,
+    params?: URLSearchParams
   ) =>
     fetchGoogleRequest<TResponse>(url, params, {
       method: 'PUT',
       body: JSON.stringify(body),
       headers: defaultHeaders
     }),
-  delete: <TResponse>(url: string, params: URLSearchParams) =>
+  delete: <TResponse>(url: string, params?: URLSearchParams) =>
     fetchGoogleRequest<TResponse>(url, params, {
       method: 'DELETE',
       headers: defaultHeaders
