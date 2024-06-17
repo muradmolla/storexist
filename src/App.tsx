@@ -1,10 +1,13 @@
+import Layout from 'components/Layout'
 import { StrictMode } from 'react'
-import { RouterProvider } from 'react-router-dom'
-import router from 'routes'
+import { Outlet } from 'react-router-dom'
+
 export default function App() {
   return (
     <StrictMode>
-      <RouterProvider router={router} />
+      <Layout>
+        <Outlet />
+      </Layout>
     </StrictMode>
   )
 }
