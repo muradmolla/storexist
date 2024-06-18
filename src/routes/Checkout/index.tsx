@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from 'store/hooks'
 import { selectCartItems, selectCartTotal } from 'store/slices/cart'
 import { extractAuthorInfo } from 'utils/book'
+import { fixPrice } from 'utils'
 
 export default function Checkout() {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ export default function Checkout() {
           <div className="border p-2">
             <h1 className="text-center text-2xl font-bold">Cart</h1>
             <p>
-              <span className="font-bold">Total:</span> {total}
+              <span className="font-bold">Total:</span> {fixPrice(total)}
             </p>
             <button
               onClick={() =>
