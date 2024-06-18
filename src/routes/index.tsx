@@ -4,6 +4,10 @@ import Details, { loader as detailsLoader } from './Details'
 import ErrorPage from './ErrorPage'
 import App from 'App'
 import Checkout from './Checkout'
+import CheckoutInformation from './Checkout/CheckoutInformation'
+import FinalCheckout, {
+  action as finalCheckoutAction
+} from './Checkout/FinalCheckout'
 import Search, { loader as searchLoader } from './Search'
 import NotFound from './NotFound'
 
@@ -32,6 +36,15 @@ const router = createBrowserRouter([
       {
         path: 'checkout',
         element: <Checkout />
+      },
+      {
+        path: 'checkout/information',
+        element: <CheckoutInformation />
+      },
+      {
+        path: 'checkout/final',
+        element: <FinalCheckout />,
+        action: finalCheckoutAction
       }
     ]
   },

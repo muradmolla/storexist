@@ -1,9 +1,11 @@
 import RemoveFromCart from 'components/RemoveFromCart'
+import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from 'store/hooks'
 import { selectCartItems, selectCartTotal } from 'store/slices/cart'
 import { extractAuthorInfo } from 'utils/book'
 
 export default function Checkout() {
+  const navigate = useNavigate()
   const books = useAppSelector(selectCartItems)
   const total = useAppSelector(selectCartTotal)
 
@@ -34,8 +36,13 @@ export default function Checkout() {
             <p>
               <span className="font-bold">Total:</span> {total}
             </p>
-            <button className="mt-4 w-full bg-blue-500 p-2 text-white">
-              Checkout
+            <button
+              onClick={() =>
+                navigate('/checkout/information', { state: { books } })
+              }
+              className="mt-4 w-full bg-blue-500 p-2 text-white"
+            >
+              Next
             </button>
           </div>
         </div>
