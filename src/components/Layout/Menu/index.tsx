@@ -15,7 +15,7 @@ export default function Menu() {
     <div
       className={classNames(defaultClasses, open ? openClasses : closedClasses)}
     >
-      <div className="container mx-auto md:flex">
+      <div className="container mx-auto px-4 md:flex">
         <div className="flex items-center justify-between">
           <Link to="/">
             <img src={logo} className="mx-auto w-60" alt="logo" />
