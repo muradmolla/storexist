@@ -23,16 +23,10 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />
       },
       {
-        path: 'search',
+        path: 'search/:query',
         element: <Search />,
         loader: searchLoader,
-        errorElement: <ErrorPage />,
-        children: [
-          {
-            path: ':query',
-            element: <Search />
-          }
-        ]
+        errorElement: <ErrorPage />
       }
     ]
   },

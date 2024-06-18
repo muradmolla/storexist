@@ -14,7 +14,7 @@ export async function loader({
       statusText: 'Query is required'
     })
   }
-  return GoogleBooksApi.searchBooks(params.query).then((books) => {
+  return await GoogleBooksApi.searchBooks(params.query).then((books) => {
     if (
       !Object.hasOwn(books, 'items') ||
       !Array.isArray(books.items) ||
