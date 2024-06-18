@@ -2,6 +2,9 @@ import BookCard from './BookCard'
 import type { BookSummary } from './BookCard'
 
 export default function BookGrid({ books }: { books: BookSummary[] }) {
+  if (!books || !Array.isArray(books)) {
+    return <p>No books found</p>
+  }
   const renderBooks = books.map((book) => (
     <BookCard key={book.id} book={book} />
   ))
