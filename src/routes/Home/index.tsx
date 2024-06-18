@@ -12,7 +12,6 @@ export default function Home() {
   useEffect(() => {
     GoogleBooksApi.searchBooks('javascript', page).then((books) => {
       setBooks(books.items)
-      console.log(books)
       setMaxPage(Math.ceil(books.totalItems / 10))
     })
   }, [page])
