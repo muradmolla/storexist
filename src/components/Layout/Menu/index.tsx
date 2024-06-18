@@ -4,6 +4,7 @@ import SearchBar from '../SearchBar'
 import logo from 'assets/logo.svg'
 import { classNames } from 'utils'
 import { IoIosMenu, IoIosClose } from 'react-icons/io'
+import Cart from 'components/Cart'
 
 export default function Menu() {
   const [open, setOpen] = useState(false)
@@ -32,6 +33,7 @@ export default function Menu() {
           <div className="md:ml-32">
             <SearchBar />
           </div>
+          <Cart />
           <button>Cart</button>
         </div>
       </div>
