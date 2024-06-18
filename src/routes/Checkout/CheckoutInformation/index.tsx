@@ -25,7 +25,6 @@ export default function CheckoutInformation() {
     const address = form.address.value
     const city = form.city.value
     const books = form.books.value
-    console.log(name, address, city, books)
     if (!name || !address || !city || !books) {
       event.preventDefault()
     }
