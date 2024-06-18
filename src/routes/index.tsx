@@ -3,6 +3,7 @@ import Home from './Home'
 import Details, { loader as detailsLoader } from './Details'
 import ErrorPage from './ErrorPage'
 import App from 'App'
+import Checkout from './Checkout'
 import Search, { loader as searchLoader } from './Search'
 import NotFound from './NotFound'
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
         element: <Search />,
         loader: searchLoader,
         errorElement: <ErrorPage />
+      },
+      {
+        path: 'checkout',
+        element: <Checkout />
       }
     ]
   },
