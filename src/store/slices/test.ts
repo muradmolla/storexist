@@ -2,6 +2,7 @@ import GoogleBooksApi from 'functions/GoogleBooksApi'
 import { setupStore } from 'store'
 import { addBook, removeBook, selectCartItems, selectCartTotal } from './cart'
 
+// Picking books inconsistently with the API can lead to false positive on cart store value total if the book is not for sale
 async function setupBook() {
   const store = setupStore()
   const books = await GoogleBooksApi.searchBooks('javascript')
