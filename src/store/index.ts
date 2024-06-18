@@ -5,9 +5,11 @@ import {
   combineReducers
 } from '@reduxjs/toolkit'
 import count from './slices/count'
+import cart from './slices/cart'
 
 const rootReducer = combineReducers({
-  count: count
+  count: count,
+  cart: cart
 })
 
 // Makes initial state recreated with every test.
