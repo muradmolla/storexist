@@ -34,7 +34,6 @@ export default function Menu() {
             <SearchBar />
           </div>
           <Cart />
-          <button>Cart</button>
         </div>
       </div>
     </div>
