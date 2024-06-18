@@ -4,6 +4,6 @@ import Layout from '.'
 describe('Layout', () => {
   it('should render the layout', () => {
     const { container } = render(<Layout>Test</Layout>)
-    expect(container.firstChild).toHaveClass('container mx-auto')
+    expect(container.firstChild?.firstChild).toHaveClass('sticky top-0 w-full')
   })
 })
