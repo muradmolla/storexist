@@ -64,3 +64,4 @@ TailwindCSS is used for styling. ESLint and Prettier are used for linting and fo
 - Professional UI design.
 - Better error handling.
 - More fields in the checkout page
+- Cart persistence through local storage.
