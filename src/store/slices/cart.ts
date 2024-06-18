@@ -32,6 +32,10 @@ export const cartSlice = createSlice({
           state.total -= item.saleInfo.retailPrice.amount
         return shouldBookStay
       })
+    },
+    clearCart: (state) => {
+      state.items = []
+      state.total = 0
     }
   },
   extraReducers: (builder) => {
@@ -46,7 +50,7 @@ export const cartSlice = createSlice({
   }
 })
 
-export const { removeBook } = cartSlice.actions
+export const { removeBook, clearCart } = cartSlice.actions
 
 export const selectCartItems = (state: RootState) => state.cart.items
 export const selectCartTotal = (state: RootState) => state.cart.total

@@ -1,6 +1,12 @@
 import GoogleBooksApi from 'functions/GoogleBooksApi'
 import { setupStore } from 'store'
-import { addBook, removeBook, selectCartItems, selectCartTotal } from './cart'
+import {
+  addBook,
+  clearCart,
+  removeBook,
+  selectCartItems,
+  selectCartTotal
+} from './cart'
 
 // Picking books inconsistently with the API can lead to false positive on cart store value total if the book is not for sale
 async function setupBook() {
@@ -25,6 +31,17 @@ describe('Cart Slice', () => {
     const { store, book } = await setupBook()
     await store.dispatch(addBook({ id: book.id }))
     store.dispatch(removeBook({ id: book.id }))
+    const state = store.getState()
+    const items = selectCartItems(state)
+    const total = selectCartTotal(state)
+    expect(items.length).toBe(0)
+    expect(total).toBe(0)
+  })
+
+  it('should clear cart', async () => {
+    const { store, book } = await setupBook()
+    await store.dispatch(addBook({ id: book.id }))
+    store.dispatch(clearCart())
     const state = store.getState()
     const items = selectCartItems(state)
     const total = selectCartTotal(state)
