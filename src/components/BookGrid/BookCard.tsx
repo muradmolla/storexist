@@ -45,10 +45,12 @@ export default function BookCard({ book }: { book: BookSummary }) {
       : 'Not for sale'
   return (
     <div key={book.id} className="flex border">
-      <img
-        src={book.volumeInfo.imageLinks?.thumbnail}
-        alt={book.volumeInfo?.title}
-      />
+      <div className="flex size-32 items-center justify-center">
+        <img
+          src={book.volumeInfo.imageLinks?.thumbnail}
+          alt={book.volumeInfo?.title}
+        />
+      </div>
       <div className="flex w-full flex-col justify-between gap-1 p-4">
         <h3 className="font-bold">
           {truncate(book.volumeInfo.title, BookCardConfig.titleTruncate)}
