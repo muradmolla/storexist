@@ -1,6 +1,7 @@
 import { useAppSelector } from 'store/hooks'
 import { selectCartItems, selectCartTotal } from 'store/slices/cart'
 import { extractAuthorInfo } from 'utils/book'
+import { fixPrice } from 'utils'
 import RemoveFromCart from 'components/RemoveFromCart'
 import { useNavigate } from 'react-router-dom'
 
@@ -45,7 +46,7 @@ export default function CartContent({
         {list}
       </ul>
       <div className="flex justify-between">
-        <p className="text-lg font-bold">Total: {total}</p>
+        <p className="text-lg font-bold">Total: {fixPrice(total)}</p>
         <button
           onClick={() => {
             navigate('/checkout')

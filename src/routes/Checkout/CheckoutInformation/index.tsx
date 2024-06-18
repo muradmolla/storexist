@@ -1,6 +1,7 @@
 import { GoogleBook } from 'functions/GoogleBooksApi/googleTypes'
 import { FormEvent } from 'react'
 import { Form, useLocation } from 'react-router-dom'
+import { fixPrice } from 'utils'
 
 export default function CheckoutInformation() {
   // Using useLocation instead of store because after clicking checkout button, changes to the cart should be ignored
@@ -67,7 +68,7 @@ export default function CheckoutInformation() {
             <div className="border p-2">
               <h1 className="text-center text-2xl font-bold">Cart</h1>
               <p>
-                <span className="font-bold">Total:</span> {total}
+                <span className="font-bold">Total:</span> {fixPrice(total)}
               </p>
               <button
                 type="submit"
