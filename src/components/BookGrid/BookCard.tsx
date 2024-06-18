@@ -27,10 +27,15 @@ export interface BookSummary {
 }
 
 export default function BookCard({ book }: { book: BookSummary }) {
-  const authors =
-    book.volumeInfo.authors.length > 1
-      ? `${book.volumeInfo.authors[0]} et al.`
-      : book.volumeInfo.authors[0]
+  let authors = 'Unknown Author'
+  let authorsTitle = 'Unknown Author'
+  if (book.volumeInfo.authors) {
+    authors =
+      book.volumeInfo.authors.length > 1
+        ? `${book.volumeInfo.authors[0]} et al.`
+        : book.volumeInfo.authors[0]
+    authorsTitle = book.volumeInfo.authors.join(', ')
+  }
 
   const navigate = useNavigate()
 
@@ -41,14 +46,14 @@ export default function BookCard({ book }: { book: BookSummary }) {
   return (
     <div key={book.id} className="flex border">
       <img
-        src={book.volumeInfo.imageLinks.thumbnail}
-        alt={book.volumeInfo.title}
+        src={book.volumeInfo.imageLinks?.thumbnail}
+        alt={book.volumeInfo?.title}
       />
       <div className="flex w-full flex-col justify-between gap-1 p-4">
         <h3 className="font-bold">
           {truncate(book.volumeInfo.title, BookCardConfig.titleTruncate)}
         </h3>
-        <p title={book.volumeInfo.authors.join(', ')}>{authors}</p>
+        <p title={authorsTitle}>{authors}</p>
         <p>{price}</p>
         <button
           onClick={() => navigate(`/details/${book.id}`)}
