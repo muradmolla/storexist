@@ -4,11 +4,13 @@ import Details, { loader as detailsLoader } from './Details'
 import ErrorPage from './ErrorPage'
 import App from 'App'
 import Search, { loader as searchLoader } from './Search'
+import NotFound from './NotFound'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -21,11 +23,21 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />
       },
       {
-        path: 'search/:query',
+        path: 'search',
         element: <Search />,
-        loader: searchLoader
+        loader: searchLoader,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: ':query'
+          }
+        ]
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ])
 

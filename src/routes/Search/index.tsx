@@ -9,9 +9,22 @@ export async function loader({
   params: Params
 }): Promise<{ books: GoogleBook[] }> {
   if (!params.query) {
-    throw new Error('Query is required')
+    throw new Response('Query is required', {
+      status: 400,
+      statusText: 'Query is required'
+    })
   }
   return GoogleBooksApi.searchBooks(params.query).then((books) => {
+    if (
+      !Object.hasOwn(books, 'items') ||
+      !Array.isArray(books.items) ||
+      books.items.length <= 0
+    ) {
+      throw new Response('Book not found', {
+        status: 404,
+        statusText: 'Book not found'
+      })
+    }
     return { books: books.items }
   })
 }
