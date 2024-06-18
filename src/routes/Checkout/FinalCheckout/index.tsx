@@ -1,4 +1,7 @@
+import { useEffect } from 'react'
 import { ActionFunction } from 'react-router-dom'
+import { useAppDispatch } from 'store/hooks'
+import { clearCart } from 'store/slices/cart'
 
 interface CheckoutFormData {
   books: string[]
@@ -35,5 +38,9 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 export default function FinalCheckout() {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(clearCart())
+  }, [dispatch])
   return <h1>Your payment is successful</h1>
 }
