@@ -34,6 +34,12 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />
       },
       {
+        path: 'search/:query/:page',
+        element: <Search />,
+        loader: searchLoader,
+        errorElement: <ErrorPage />
+      },
+      {
         path: 'checkout',
         element: <Checkout />
       },
