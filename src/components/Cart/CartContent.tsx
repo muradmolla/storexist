@@ -2,8 +2,17 @@ import { useAppSelector } from 'store/hooks'
 import { selectCartItems, selectCartTotal } from 'store/slices/cart'
 import { extractAuthorInfo } from 'utils/book'
 import RemoveFromCart from 'components/RemoveFromCart'
+import { useNavigate } from 'react-router-dom'
 
-export default function CartContent() {
+const voidFn = () => {}
+
+export default function CartContent({
+  closeCart = voidFn
+}: {
+  closeCart: () => void
+}) {
+  const navigate = useNavigate()
+
   const books = useAppSelector(selectCartItems)
   const total = useAppSelector(selectCartTotal)
   const list = books.map((book) => (
@@ -37,7 +46,15 @@ export default function CartContent() {
       </ul>
       <div className="flex justify-between">
         <p className="text-lg font-bold">Total: {total}</p>
-        <button className="rounded bg-green-400 px-4 text-lg">Checkout</button>
+        <button
+          onClick={() => {
+            navigate('/checkout')
+            closeCart()
+          }}
+          className="rounded bg-green-400 px-4 text-lg"
+        >
+          Go To Cart
+        </button>
       </div>
     </>
   )

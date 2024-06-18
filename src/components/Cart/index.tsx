@@ -5,6 +5,7 @@ import { classNames } from 'utils'
 
 export default function Cart() {
   const [open, setOpen] = useState(false)
+  const closeCart = () => setOpen(false)
   return (
     <div>
       <button className="hidden md:block" onClick={() => setOpen(!open)}>
@@ -16,7 +17,7 @@ export default function Cart() {
           open ? '' : 'md:hidden'
         )}
       >
-        <CartContent />
+        <CartContent closeCart={closeCart} />
       </div>
     </div>
   )
