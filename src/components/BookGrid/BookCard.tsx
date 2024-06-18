@@ -1,6 +1,7 @@
 import AddToCart from 'components/AddToCart'
 import { useNavigate } from 'react-router-dom'
 import { truncate } from 'utils'
+import { extractAuthorInfo } from 'utils/book'
 
 export const BookCardConfig = {
   titleTruncate: 30
@@ -27,15 +28,9 @@ export interface BookSummary {
 }
 
 export default function BookCard({ book }: { book: BookSummary }) {
-  let authors = 'Unknown Author'
-  let authorsTitle = 'Unknown Author'
-  if (book.volumeInfo.authors) {
-    authors =
-      book.volumeInfo.authors.length > 1
-        ? `${book.volumeInfo.authors[0]} et al.`
-        : book.volumeInfo.authors[0]
-    authorsTitle = book.volumeInfo.authors.join(', ')
-  }
+  const { authorShortText, authorsWithCommas } = extractAuthorInfo(
+    book.volumeInfo.authors
+  )
 
   const navigate = useNavigate()
 
@@ -55,7 +50,7 @@ export default function BookCard({ book }: { book: BookSummary }) {
         <h3 className="font-bold">
           {truncate(book.volumeInfo.title, BookCardConfig.titleTruncate)}
         </h3>
-        <p title={authorsTitle}>{authors}</p>
+        <p title={authorsWithCommas}>{authorShortText}</p>
         <p>{price}</p>
         <button
           onClick={() => navigate(`/details/${book.id}`)}
