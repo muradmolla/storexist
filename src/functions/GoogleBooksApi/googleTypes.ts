@@ -12,7 +12,7 @@ export interface GoogleBook {
   volumeInfo: VolumeInfo
   saleInfo: SaleInfo
   accessInfo: AccessInfo
-  searchInfo: SearchInfo
+  searchInfo?: SearchInfo
 }
 export interface VolumeInfo {
   title: string
