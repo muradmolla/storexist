@@ -56,3 +56,11 @@ TailwindCSS is used for styling. ESLint and Prettier are used for linting and fo
 
 - Google Books Api returns different total items for the same search query with different page value. This causes the application to show different page counts for the same search query. This can be solved by fetching the total item count from the first page and using it for pagination.
 - Clicking the logo doesn't refresh the page when in the home page.
+- Not for sale books are not handled properly. They are handled as free books in the application.
+- Google Books Api doesn't return the fields consistently. This causes some books to not have all the fields and potential crashes.
+
+## Future Work
+
+- Professional UI design.
+- Better error handling.
+- More fields in the checkout page
