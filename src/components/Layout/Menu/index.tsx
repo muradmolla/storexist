@@ -15,7 +15,7 @@ export default function Menu() {
     <div
       className={classNames(defaultClasses, open ? openClasses : closedClasses)}
     >
-      <div className="container mx-auto px-4 md:flex">
+      <div className="container mx-auto flex h-full flex-col items-stretch px-4 pb-4 md:flex-row md:pb-0">
         <div className="flex items-center justify-between">
           <Link to="/">
             <img src={logo} className="mx-auto w-60" alt="logo" />
@@ -26,11 +26,11 @@ export default function Menu() {
         </div>
         <div
           className={classNames(
-            'md:block md:flex md:w-full md:justify-between items-center',
-            open ? '' : 'hidden'
+            'grow md:flex flex-col md:flex-row md:w-full md:justify-between items-center',
+            open ? 'flex' : 'hidden'
           )}
         >
-          <div className="md:ml-32">
+          <div className="w-full md:ml-32">
             <SearchBar />
           </div>
           <Cart />

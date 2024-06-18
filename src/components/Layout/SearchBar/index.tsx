@@ -11,7 +11,7 @@ export default function SearchBar() {
   return (
     <form onSubmit={handleSubmit}>
       <input
-        className="w-full rounded border border-gray-300 p-2"
+        className="w-full rounded border border-gray-300 p-2 md:w-auto"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
